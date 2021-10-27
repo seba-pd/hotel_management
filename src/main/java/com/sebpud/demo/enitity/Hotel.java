@@ -2,25 +2,20 @@ package com.sebpud.demo.enitity;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Hotel {
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
     private String hotelName;
     private String img;
     private String price;
     private Long rating;
-
-    public Hotel(Long id, String hotelName, String img, String price, Long rating) {
-        this.id = id;
-        this.hotelName = hotelName;
-        this.img = img;
-        this.price = price;
-        this.rating = rating;
-    }
 
     public Hotel() {
     }
