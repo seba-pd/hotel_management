@@ -30,7 +30,7 @@ public class HotelController {
         return new ResponseEntity<>(hotelService.getAllHotels(), HttpStatus.OK);
     }
 
-    @GetMapping({"hotels"})
+    @GetMapping({"hotels_sorted"})
     public ResponseEntity<List<Hotel>> getAllHotelsByRating(){
         return new ResponseEntity<>(hotelService.getAllHotelsByRating(), HttpStatus.OK);
     }
