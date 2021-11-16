@@ -12,8 +12,11 @@ import java.util.Optional;
 @Service
 public class HotelService {
 
-    @Autowired
-    private HotelRepository hotelRepository;
+    private final HotelRepository hotelRepository;
+
+    public HotelService(HotelRepository hotelRepository) {
+        this.hotelRepository = hotelRepository;
+    }
 
     public Hotel addHotel(Hotel hotel){
         return hotelRepository.save(hotel);
@@ -27,15 +30,17 @@ public class HotelService {
     public Hotel getHotel(Long id){
 
         Optional<Hotel> hotel =  hotelRepository.findById(id);
-
-        if(hotel.isEmpty())
-            throw new HotelNotFoundException();
+        if(hotel.isEmpty()) throw new HotelNotFoundException();
 
         return hotel.get();
     }
 
     public List<Hotel> getAllHotels(){
        return hotelRepository.findAll();
+    }
+
+    public List<Hotel> getAllHotelsByRating(){
+        return hotelRepository.findByOrderByRating();
     }
 
 

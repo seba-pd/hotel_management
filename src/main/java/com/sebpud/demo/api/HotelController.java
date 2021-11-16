@@ -30,6 +30,11 @@ public class HotelController {
         return new ResponseEntity<>(hotelService.getAllHotels(), HttpStatus.OK);
     }
 
+    @GetMapping({"hotels"})
+    public ResponseEntity<List<Hotel>> getAllHotelsByRating(){
+        return new ResponseEntity<>(hotelService.getAllHotelsByRating(), HttpStatus.OK);
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Long> deleteHotel(@PathVariable Long id){
         return new ResponseEntity<>(hotelService.deleteHotel(id),HttpStatus.OK);
